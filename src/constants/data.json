@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "How was your week overall?",
+      "options": {
+        "A": { "icon": "👍", "label": "Like" },
+        "B": { "icon": "🤔", "label": "Neuteral" },
+        "C": { "icon": "👎", "label": "Dislike" }
+      },
+      "selected": ""
+    },
+    {
+      "id": 2,
+      "question": "Do you feel passionate today?",
+      "options": {
+        "A": { "icon": "👍", "label": "Like" },
+        "B": { "icon": "🤔", "label": "Neuteral" },
+        "C": { "icon": "👎", "label": "Dislike" }
+      },
+      "selected": ""
+    },
+    {
+      "id": 3,
+      "question": "Do you have meetings today",
+      "options": {
+        "A": { "icon": "👍", "label": "Like" },
+        "B": { "icon": "🤔", "label": "Neuteral" },
+        "C": { "icon": "👎", "label": "Dislike" }
+      },
+      "selected": ""
+    },
+    {
+      "id": 4,
+      "question": "Are you stuck with any task today",
+      "options": {
+        "A": { "icon": "👍", "label": "Like" },
+        "B": { "icon": "🤔", "label": "Neuteral" },
+        "C": { "icon": "👎", "label": "Dislike" }
+      },
+      "selected": ""
+    },
+    {
+      "id": 5,
+      "question": "have you submit the timesheet today?",
+      "options": {
+        "A": { "icon": "👍", "label": "Like" },
+        "B": { "icon": "🤔", "label": "Neuteral" },
+        "C": { "icon": "👎", "label": "Dislike" }
+      },
+      "selected": ""
+    }
+  ]
+}
