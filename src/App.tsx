@@ -8,15 +8,13 @@ import MainContent from "./components/mainContent";
 function App() {
   return (
     <div className="App">
-      <Grid
-        container
-        direction="row"
-        sx={{
-          overflow: "hidden",
-        }}
-      >
-        <LeftNav />
-        <MainContent />
+      <Grid container>
+        <Grid item xs={1}>
+          <LeftNav />
+        </Grid>
+        <Grid item xs={11}>
+          <MainContent />
+        </Grid>
       </Grid>
     </div>
   );

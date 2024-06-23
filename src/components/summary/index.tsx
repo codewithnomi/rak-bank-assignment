@@ -41,7 +41,7 @@ export default function Summary({ allQuestions }: SummaryProps) {
     <>
       {allQuestions.map((q: Question, i: number) => (
         <React.Fragment key={i}>
-          <Grid item container xs={6}>
+          <Grid item container sm={6} xs={9} p={3}>
             <Slide
               timeout={{ enter: 500, exit: 0 }}
               direction="right"
@@ -56,7 +56,8 @@ export default function Summary({ allQuestions }: SummaryProps) {
           <Grid
             item
             container
-            xs={6}
+            sm={6}
+            xs={3}
             direction="column"
             justifyContent="center"
             alignItems={"center"}

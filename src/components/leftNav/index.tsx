@@ -32,12 +32,11 @@ export default function LeftNav() {
 
   return (
     <Grid
-      item
-      xs={1}
       container
       sx={{
         bgcolor: "#6b54fe",
         minHeight: "100vh",
+        minWidth: "50px",
         overflowY: "auto",
       }}
     >
@@ -48,7 +47,7 @@ export default function LeftNav() {
         alignItems={"center"}
         pt={5}
       >
-        <img src={logo} width={30} />
+        <img src={logo} width={30} alt="logo" />
       </Grid>
       <Grid
         container

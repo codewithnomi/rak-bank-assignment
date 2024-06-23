@@ -1,77 +1,65 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { configureStore, EnhancedStore } from "@reduxjs/toolkit";
+import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 import Options from "./index";
-import questionReducer, {
-  Question,
-  setAllQuestions,
-  setSelectedQuestion,
-  setShowSummary,
-  updateKey,
-} from "../../slices/questionSlice";
+import { Provider } from "react-redux";
+import store from "../../store";
 
 describe("Options component", () => {
-  let mockStore: EnhancedStore;
+  const mockHandleChange = jest.fn();
+  const options = {
+    A: { label: "Option A", icon: "A" },
+    B: { label: "Option B", icon: "B" },
+  };
+  const selected = "A";
+  const forceRender = 0;
 
-  beforeEach(() => {
-    mockStore = configureStore({
-      reducer: {
-        question: questionReducer,
-      },
-    });
-
-    const initialQuestion: Question = {
-      id: 1,
-      question: "Sample Question",
-      options: {
-        A: { icon: "iconA", label: "Option A" },
-        B: { icon: "iconB", label: "Option B" },
-      },
-      selected: "A",
-    };
-
-    mockStore.dispatch(setAllQuestions([initialQuestion]));
-    mockStore.dispatch(setSelectedQuestion(initialQuestion));
-    mockStore.dispatch(setShowSummary(false));
-    mockStore.dispatch(updateKey());
-  });
-
-  it("renders correctly", () => {
-    const { container } = render(
-      <Provider store={mockStore}>
-        <Options />
+  it("renders the correct number of options", () => {
+    render(
+      <Provider store={store}>
+        <Options
+          options={options}
+          forceRender={forceRender}
+          selected={selected}
+          handleChange={mockHandleChange}
+        />
       </Provider>
     );
 
-    expect(container.querySelectorAll(".MuiToggleButton-root").length).toBe(2);
+    const toggleButtons = screen.getAllByRole("button");
+    expect(toggleButtons.length).toBe(Object.keys(options).length);
   });
 
   it("calls handleChange with the correct key when an option is clicked", () => {
-    const { container } = render(
-      <Provider store={mockStore}>
-        <Options />
+    render(
+      <Provider store={store}>
+        <Options
+          options={options}
+          forceRender={forceRender}
+          selected={selected}
+          handleChange={mockHandleChange}
+        />
       </Provider>
     );
 
-    const optionB = container.querySelectorAll(".MuiToggleButton-root")[1];
+    const optionB = screen.getByText("B");
     fireEvent.click(optionB);
-    const updatedState = mockStore.getState();
-    console.log(updatedState);
-    expect(updatedState.question.allQuestions[0]?.selected).toBe("B");
+    expect(mockHandleChange).toHaveBeenCalledWith("B");
   });
 
-  it("sets the selected style for the selected option", () => {
-    const { container } = render(
-      <Provider store={mockStore}>
-        <Options />
+  it("renders the selected option correctly", () => {
+    render(
+      <Provider store={store}>
+        <Options
+          options={options}
+          forceRender={forceRender}
+          selected={selected}
+          handleChange={mockHandleChange}
+        />
       </Provider>
     );
 
-    const optionA = container.querySelectorAll(".MuiToggleButton-root")[0];
-    const optionB = container.querySelectorAll(".MuiToggleButton-root")[1];
-
-    expect(optionA).toHaveAttribute("aria-pressed", "true");
-    expect(optionB).toHaveAttribute("aria-pressed", "false");
+    const selectedOption = screen.getByText("A").closest("button");
+    expect(selectedOption).toHaveAttribute("aria-pressed", "true");
   });
 });

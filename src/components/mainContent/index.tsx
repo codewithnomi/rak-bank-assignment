@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import data from "../../constants/data.json";
 import { Grid } from "@mui/material";
 
-import Options from "../../components/Options";
+import OptionsContainer from "../../components/OptionsContainer";
 import Summary from "../../components/summary";
 import Questions from "../../components/questions";
 import { RootState } from "../../store";
@@ -26,44 +26,52 @@ export default function MainContent() {
   }, [dispatch]);
 
   return (
-    <>
+    <Grid container>
       {!showSummary ? (
         <>
           <Grid
             item
-            xs={5}
+            sm={6}
+            xs={12}
             container
             direction="row"
             justifyContent="flex-start"
             alignContent="center"
             sx={{
               bgcolor: "#6b54fe",
+              minHeight: { xs: "60vh", sm: "100vh" },
+              maxHeight: { xs: "60vh" },
+              overflowY: "hidden",
             }}
           >
             <Questions />
           </Grid>
           <Grid
             item
-            xs={6}
+            sm={6}
+            xs={12}
             container
-            direction="column"
-            justifyContent="center"
+            direction="row"
+            justifyContent="space-around"
             alignItems="center"
+            sx={{
+              minHeight: { xs: "40vh" },
+              overflowY: "hidden",
+            }}
           >
-            <Options />
+            <OptionsContainer />
           </Grid>
         </>
       ) : (
         <Grid
           item
-          xs={11}
+          xs={12}
           container
           direction="row"
           justifyContent="center"
-          alignItems="flex-start"
+          alignItems="center"
           sx={{
-            p: "50px 100px",
-            minHeight: "100vh",
+            p: { sm: "50px 100px", xs: "20px 20px" },
             maxHeight: "100vh",
             overflowY: "auto",
             overflowX: "hidden",
@@ -72,6 +80,6 @@ export default function MainContent() {
           <Summary allQuestions={allQuestions} />
         </Grid>
       )}
-    </>
+    </Grid>
   );
 }

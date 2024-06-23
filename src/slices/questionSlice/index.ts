@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Option {
+export interface Option {
   icon: string;
   label: string;
 }
@@ -12,7 +12,7 @@ export interface Question {
   selected: string;
 }
 
-interface QuestionState {
+export interface QuestionState {
   allQuestions: Question[];
   selectedQuestion: Question | null;
   showSummary: boolean;
