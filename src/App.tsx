@@ -12,7 +12,6 @@ function App() {
         container
         direction="row"
         sx={{
-          minHeight: "100vh",
           overflow: "hidden",
         }}
       >

@@ -33,11 +33,11 @@ export default function MainContent() {
             item
             xs={5}
             container
-            direction="column"
-            justifyContent="center"
+            direction="row"
+            justifyContent="flex-start"
+            alignContent="center"
             sx={{
               bgcolor: "#6b54fe",
-              minHeight: "100vh",
             }}
           >
             <Questions />

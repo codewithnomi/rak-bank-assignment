@@ -20,7 +20,7 @@ export default function Questions() {
       <Typography
         variant="h4"
         color={"white"}
-        fontSize={"4rem"}
+        fontSize={"3rem"}
         p={10}
         fontWeight={"bold"}
       >

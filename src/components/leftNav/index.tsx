@@ -38,7 +38,6 @@ export default function LeftNav() {
       sx={{
         bgcolor: "#6b54fe",
         minHeight: "100vh",
-        maxHeight: "100vh",
         overflowY: "auto",
       }}
     >
