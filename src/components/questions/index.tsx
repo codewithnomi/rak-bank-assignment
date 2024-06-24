@@ -21,8 +21,10 @@ export default function Questions() {
         variant="h4"
         color={"white"}
         fontSize={"3rem"}
-        p={10}
         fontWeight={"bold"}
+        sx={{
+          p: { md: 12, sm: 5, xs: 3 },
+        }}
       >
         {selectedQuestion?.question}
       </Typography>

@@ -1,7 +1,7 @@
 import React from "react";
 
 import ToggleButton from "@mui/material/ToggleButton";
-import { Slide, Tooltip } from "@mui/material";
+import { Box, Chip, Slide, Tooltip, Typography } from "@mui/material";
 
 export default function Options(props: any) {
   const { options, forceRender, selected, handleChange } = props;
@@ -18,21 +18,24 @@ export default function Options(props: any) {
             mountOnEnter
             unmountOnExit
           >
-            <Tooltip
-              arrow
-              title={options[key].label}
-              // open={selected === key}
-              key={index}
-            >
-              <ToggleButton
-                value={key}
-                selected={selected === key}
-                onChange={() => handleChange(key)}
-                sx={{ border: "none", fontSize: "2rem", color: "black" }}
+            <Box>
+              <Tooltip
+                arrow
+                title={options[key].label}
+                // open={selected === key}
+                key={index}
               >
-                {options[key].icon}
-              </ToggleButton>
-            </Tooltip>
+                <ToggleButton
+                  value={key}
+                  selected={selected === key}
+                  onChange={() => handleChange(key)}
+                  sx={{ border: "none", fontSize: "2rem", color: "black" }}
+                >
+                  {options[key].icon}
+                </ToggleButton>
+              </Tooltip>
+              {/* {selected === key && <Chip label={options[key].label} />} */}
+            </Box>
           </Slide>
         ))}
     </>
